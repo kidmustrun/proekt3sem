@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% block title %}
+Вакансии
+{% endblock %}
+{% block name %}Вакансии{% endblock %}
+{% block description %}Вакансии в нашем сервисе{% endblock %}
+{% block content %}
+
+
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Вакансии
+      </h3>
+{% for job in jobs %}
+      <div class="card">
+  <div class="card-header">
+      {{job.title}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{job.salary}} рублей</h5>
+    <p class="card-text">{{job.text}}</p>
+  </div>
+</div>
+{% endfor %}
+    </div><!-- /.blog-main -->
+
+{% endblock %}
