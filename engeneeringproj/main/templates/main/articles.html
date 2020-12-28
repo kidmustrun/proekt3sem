@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+{% block title %}
+Статьи блога {{blog.title}}
+{% endblock %}
+{% block name %}Статьи блога {{blog.title}}{% endblock %}
+{% block content %}
+    <div class="col-md-8 blog-main">
+        <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'blogs' %}">Назад</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Статьи блога {{blog.title}}</li>
+  </ol>
+</nav>
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Статьи блога {{blog.title}}
+      </h3>
+{% for article in articles %}
+      <div class="blog-post">
+        <h2 class="blog-post-title">{{article.title}}</h2>
+        <p>{{article.text}}</p>
+          <small>{{article.date}}</small>
+      </div><!-- /.blog-post -->
+{% endfor %}
+    </div><!-- /.blog-main -->
+
+{% endblock %}

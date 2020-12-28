@@ -5,7 +5,12 @@
 {% block name %}{{ad.title}}{% endblock %}
 {% block description %}{{ad.date}}{% endblock %}
 {% block content %}
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'ads_index' %}">Назад</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ad.title}}</li>
+  </ol>
+</nav>
 
 <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
@@ -15,9 +20,14 @@
       <div class="blog-post">
 
         <p>{{ad.description}}</p>
+          <p>Расположение: {{ad.geo}}</p>
+          <p>Процент по ипотеке: {{credit.percent}}%</p>
+          <p>Добавлено пользователем: {{user.name}} {{user.surname}}</p>
+          <p>Телефон: {{user.phone}}</p>
       </div>
 
 
     </div>
+
 
 {% endblock %}
