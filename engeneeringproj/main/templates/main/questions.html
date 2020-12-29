@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% block title %}
+Вопросы
+{% endblock %}
+{% block name %}Вопросы{% endblock %}
+{% block description %}Вопросы и ответы на них{% endblock %}
+{% block content %}
+
+
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+       Список вопросов
+      </h3>
+{% for answer in answers %}
+        <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{answer.id_question.text}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Автор: {{answer.id_question.id_user.name}} {{answer.id_question.id_user.surname}}</h6>
+    <p class="card-text">{{answer.text}}</p>
+  </div>
+</div>
+{% endfor %}
+    </div><!-- /.blog-main -->
+
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import News, Jobs, Documents, Blog, Articles
-from ad.models import Users
+from .models import News, Jobs, Documents, Blog, Articles, Questions, Answers
+from ad.models import Users, Ads
 
 
 def index(request):
@@ -28,3 +28,8 @@ def articles(request, id):
     articles = Articles.objects.filter(id_blog=id)
     blog = Blog.objects.get(id=id)
     return render(request, 'main/articles.html', {'articles': articles, 'blog': blog})
+
+def questions(request):
+    questions = Questions.objects.select_related('id_user')
+    answers = Answers.objects.select_related('id_question')
+    return render(request, 'main/questions.html', {'questions': questions, 'answers': answers})

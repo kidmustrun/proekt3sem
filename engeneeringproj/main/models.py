@@ -40,3 +40,21 @@ class Articles(models.Model):
     class Meta:
         verbose_name = "Статья"
         verbose_name_plural = "Статьи"
+
+
+class Questions(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_user = models.ForeignKey('ad.Users', on_delete=models.CASCADE)
+    text = models.TextField('Текст вопроса')
+    class Meta:
+        verbose_name = "Вопрос"
+        verbose_name_plural = "Вопросы"
+
+
+class Answers(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_question = models.ForeignKey('Questions', on_delete=models.CASCADE)
+    text = models.TextField('Текст ответа')
+    class Meta:
+        verbose_name = "Ответ"
+        verbose_name_plural = "Ответы"
