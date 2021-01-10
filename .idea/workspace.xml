@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="140ebf9b-addc-4877-8c56-4c35a8dc9592" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/engeneeringproj/main/templates/main/new_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/engeneeringproj/main/templates/main/new_edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engeneeringproj/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/templates/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/templates/main/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/engeneeringproj/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$оговый отчет.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/~WRL0005.tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Итоговый отчет.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Итоговый отчет.docx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +49,7 @@
       <workItem from="1609166565024" duration="9072000" />
       <workItem from="1609175856786" duration="9027000" />
       <workItem from="1609953484088" duration="5235000" />
-      <workItem from="1610303652829" duration="891000" />
+      <workItem from="1610303652829" duration="3066000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1609158143844</created>
@@ -116,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609251289719</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add CRUD">
+      <created>1610304683698</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1610304683698</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +148,7 @@
     <MESSAGE value="fix" />
     <MESSAGE value="add import and export for news" />
     <MESSAGE value="add import and export in installed apps" />
-    <option name="LAST_COMMIT_MESSAGE" value="add import and export in installed apps" />
+    <MESSAGE value="add CRUD" />
+    <option name="LAST_COMMIT_MESSAGE" value="add CRUD" />
   </component>
 </project>
