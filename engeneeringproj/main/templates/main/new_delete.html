@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+ {% block name %}Удалить новость{% endblock %}
+{% block content %}
+    <form action="" method="post">{% csrf_token %}
+      <p>Вы действительно хотите удалить эту новость?</p>
+      <input class="btn btn-outline-danger" type="submit" value="Удалить" />
+        <a class="btn btn-outline-dark" href="{% url 'home' %}">Назад</a>
+    </form>
+{% endblock content %}

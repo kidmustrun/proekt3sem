@@ -1,12 +1,36 @@
 from django.shortcuts import render
 from .models import News, Jobs, Documents, Blog, Articles, Questions, Answers
 from ad.models import Users, Ads
+from django.http import HttpResponseRedirect
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 
 def index(request):
     ads = Ads.objects.all()[:2]
     news = News.objects.all()
     return render(request, 'main/index.html', {'news': news, 'ads': ads})
+
+
+def createNew(request):
+    if request.method == "POST":
+        new = News()
+        new.title = request.POST.get("title")
+        new.text = request.POST.get("text")
+        new.save()
+    return HttpResponseRedirect("/")
+
+
+class NewUpdate(UpdateView):
+    model = News
+    template_name = 'main/new_edit.html'
+    fields = ['title', 'text']
+
+
+class NewDelete(DeleteView):
+    model = News
+    template_name = 'main/new_delete.html'
+    success_url = reverse_lazy('home')
 
 
 def jobs_list(request):

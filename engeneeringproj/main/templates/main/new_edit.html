@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+ {% block name %}Редактировать новость{% endblock %}
+{% block content %}
+    <form method="POST" action="/" class="form-group">
+    {% csrf_token %}
+        {{ form.as_p }}
+        <input class="form-control" type="submit" value="Редактировать" >
+    </form>
+</form>
+{% endblock content %}

@@ -5,7 +5,7 @@
 {% block name %}Главная страница{% endblock %}
 {% block description %}Объявления недвижимости, новости и другие ресурсы сайта{% endblock %}
 {% block content %}
-<div class="row mb-2">
+<div class="row mb-2" xmlns="http://www.w3.org/1999/html">
     {% for ad in ads %}
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -21,16 +21,29 @@
     {% endfor %}
   </div>
 </div>
+<form method="POST" action="create_new/" class="form-group">
+    {% csrf_token %}
 
+            <h1>Добавить новость</h1>
+            <input class="form-control" type="text" name="title" placeholder="Название новости"/>
+
+            <textarea class="form-control" name="text" placeholder="Текст новости" /></textarea>
+        </p>
+        <input class="form-control" type="submit" value="Сохранить" >
+    </form>
     <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
         Новости
       </h3>
 {% for new in news %}
-      <div class="blog-post">
+      <div class="blog-post border p-3 m-3">
         <h2 class="blog-post-title">{{new.title}}</h2>
         <p>{{new.text}}</p>
+          <a class="btn btn-outline-info" href="{% url 'new_edit' new.id %}">Редактировать новость</a>
+          <a class="btn btn-outline-danger" href="{% url 'new_delete' new.id %}">Удалить новость</a>
+
       </div><!-- /.blog-post -->
+
 {% endfor %}
     </div><!-- /.blog-main -->
 
