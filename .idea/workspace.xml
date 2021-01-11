@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="140ebf9b-addc-4877-8c56-4c35a8dc9592" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/engeneeringproj/main/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/templates/main/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/templates/main/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/ad/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/ad/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/engeneeringproj/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/engeneeringproj/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/engeneeringproj/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/engeneeringproj/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/templates/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/templates/main/new_delete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/templates/main/new_edit.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/engeneeringproj/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$оговый отчет.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/~WRL0005.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Итоговый отчет.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Итоговый отчет.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -50,6 +56,7 @@
       <workItem from="1609175856786" duration="9027000" />
       <workItem from="1609953484088" duration="5235000" />
       <workItem from="1610303652829" duration="3066000" />
+      <workItem from="1610307901492" duration="7444000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1609158143844</created>

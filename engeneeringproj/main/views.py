@@ -4,6 +4,10 @@ from ad.models import Users, Ads
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializers import DocumentSerializer
+from django.shortcuts import get_object_or_404
 
 
 def index(request):
@@ -11,26 +15,36 @@ def index(request):
     news = News.objects.all()
     return render(request, 'main/index.html', {'news': news, 'ads': ads})
 
+class DocumentView(APIView):
+    def get(self, request):
+        documents = Documents.objects.all()
+        serializer = DocumentSerializer(documents, many=True)
+        return Response({"documents": serializer.data})
 
-def createNew(request):
-    if request.method == "POST":
-        new = News()
-        new.title = request.POST.get("title")
-        new.text = request.POST.get("text")
-        new.save()
-    return HttpResponseRedirect("/")
+    def post(self, request):
+        document = request.data.get('document')
+        serializer = DocumentSerializer(data=document)
+        if serializer.is_valid(raise_exception=True):
+            document_saved = serializer.save()
+        return Response({"success": "Document '{}' created successfully".format(document_saved.title)})
 
+    def put(self, request, pk):
+        saved_document = get_object_or_404(Documents.objects.all(), pk=pk)
+        data = request.data.get('document')
+        serializer = DocumentSerializer(instance=saved_document, data=data, partial=True)
+        if serializer.is_valid(raise_exception=True):
+            document_saved = serializer.save()
+        return Response({
+            "success": "Document '{}' updated successfully".format(document_saved.title)
+        })
 
-class NewUpdate(UpdateView):
-    model = News
-    template_name = 'main/new_edit.html'
-    fields = ['title', 'text']
-
-
-class NewDelete(DeleteView):
-    model = News
-    template_name = 'main/new_delete.html'
-    success_url = reverse_lazy('home')
+    def delete(self, request, pk):
+        # Get object with this pk
+        document = get_object_or_404(Documents.objects.all(), pk=pk)
+        document.delete()
+        return Response({
+            "message": "Document with id `{}` has been deleted.".format(pk)
+        }, status=204)
 
 
 def jobs_list(request):
