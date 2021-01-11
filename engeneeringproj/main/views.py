@@ -39,7 +39,6 @@ class DocumentView(APIView):
         })
 
     def delete(self, request, pk):
-        # Get object with this pk
         document = get_object_or_404(Documents.objects.all(), pk=pk)
         document.delete()
         return Response({

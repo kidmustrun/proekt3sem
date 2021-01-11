@@ -13,10 +13,15 @@ class NewsResource(resources.ModelResource):
 class NewsAdmin(ImportExportModelAdmin):
     resource_class = NewsResource
 
+class DocumentsAdmin(admin.ModelAdmin):
+    ordering = ('title',)
+    list_display = ('title', 'url')
+    search_fields = ('title',)
+    filter_vertical = ('title',)
 
 admin.site.register(News, NewsAdmin)
 admin.site.register(Jobs)
-admin.site.register(Documents)
+admin.site.register(Documents, DocumentsAdmin)
 admin.site.register(Blog)
 admin.site.register(Articles)
 admin.site.register(Questions)
