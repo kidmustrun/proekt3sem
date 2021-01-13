@@ -35,8 +35,7 @@ class Users(models.Model):
 class Credit(models.Model):
     id_credit = models.ForeignKey('Ads', on_delete=models.CASCADE)
     percent = models.DecimalField('Процент под ипотеку', max_digits=5, decimal_places=3)
-    def __str__(self):
-        return self.percent
+
     class Meta:
         verbose_name = "Условие ипотеки"
         verbose_name_plural = "Условия ипотеки"

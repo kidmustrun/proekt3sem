@@ -17,7 +17,6 @@ class DocumentsAdmin(admin.ModelAdmin):
     ordering = ('title',)
     list_display = ('title', 'url')
     search_fields = ('title',)
-    filter_vertical = ('title',)
 
 admin.site.register(News, NewsAdmin)
 admin.site.register(Jobs)
