@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="140ebf9b-addc-4877-8c56-4c35a8dc9592" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engeneeringproj/ad/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/ad/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/engeneeringproj/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/engeneeringproj/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/main/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/landing/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/landing/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Итоговый отчет.docx" beforeDir="false" afterPath="$PROJECT_DIR$/Итоговый отчет.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/engeneeringproj/engeneeringproj/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/engeneeringproj/engeneeringproj/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
