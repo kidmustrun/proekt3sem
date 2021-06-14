@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import Ads, Users, Credit
+from .models import Ad, Credit
 
 
-admin.site.register(Ads)
-admin.site.register(Users)
+admin.site.register(Ad)
 admin.site.register(Credit)

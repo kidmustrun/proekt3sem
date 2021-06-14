@@ -19,7 +19,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ad.price}} рублей</h5>
     <p class="card-text">{{ad.description}}</p>
-      <a href="{% url 'ad_detail' ad.id %}" class="btn btn-primary">Смотреть подробнее</a>
+      <a href="{% url 'ad_detail' ad.id_ad %}" class="btn btn-primary">Смотреть подробнее</a>
   </div>
 </div>
 {% endfor %}

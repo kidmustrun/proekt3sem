@@ -30,26 +30,46 @@
     enable_page_level_ads: true
   });
 </script>
-
-
-    <div class="container">
-
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="{% url 'home' %}">Главная</a>
-      <a class="p-2 text-muted" href="{% url 'ads_index' %}">Объявления</a>
-      <a class="p-2 text-muted" href="{% url 'jobs' %}">Вакансии</a>
-      <a class="p-2 text-muted" href="{% url 'blogs' %}">Блоги</a>
-      <a class="p-2 text-muted" href="{% url 'documents' %}">Документы</a>
-      <a class="p-2 text-muted" href="{% url 'questions' %}">Вопросы</a>
-    </nav>
+    <div class="main-container">
+      <div class="login">
+      {% if user.is_authenticated %}
+      <span class="p-2 text-light">Привет, {{ user.username }}!</span>
+      <a href="{% url 'logout' %}" class="p-2 text-light">Выйти</a>
+   
+    {% else %}
+      <a href="{% url 'login' %}" class="p-2 text-light">Войти</a>
+      <a href="{% url 'signup' %}" class="p-2 text-light">Зарегистрироваться</a>
+    {% endif %}
   </div>
+  <div class="text-white rounded about">
+    <video class="video_background"  preload="auto" autoplay="true" loop="true" muted="muted">
 
-  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 font-italic">{% block name %}{% endblock %}</h1>
+      <source src="../media/main.mp4" type="video/mp4"><!-- MP4 для Safari, IE9, iPhone, iPad, Android, и Windows Phone 7 -->
+    
+      <source src="../media/main.webm" type="video/webm"><!-- WebM/VP8 для Firefox4, Opera, и Chrome -->
+    
+      <source src="video.ogv" type="video/ogg"><!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera -->
+      <object data="video.swf" type="application/x-shockwave-flash"><!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video -->
+    
+        <param name="movie" value="video.swf">
+      </object>
+    
+    </video>
+    <div class="main-text text-center">
+      <h1 class="display-4 font-bold">{% block name %}{% endblock %}</h1>
       <p class="lead my-3">{% block description %}{% endblock %}</p>
     </div>
+  </div>
+  
+  <div class="nav-scroller py-1 mb-2 sticky-top bg-dark">
+    <nav class="nav d-flex justify-content-around">
+      <a class="p-2 text-light" href="{% url 'home' %}">Главная</a>
+      <a class="p-2 text-light" href="{% url 'ads_index' %}">Объявления</a>
+      <a class="p-2 text-light" href="{% url 'jobs' %}">Вакансии</a>
+      <a class="p-2 text-light" href="{% url 'blogs' %}">Блоги</a>
+      <a class="p-2 text-light" href="{% url 'documents' %}">Документы</a>
+      <a class="p-2 text-light" href="{% url 'questions' %}">Вопросы</a>
+    </nav>
   </div>
         <main role="main" class="container">
   <div class="row">
@@ -58,3 +78,39 @@
 </main><!-- /.container -->
 </body>
 </html>
+<style>
+  html{
+    overflow-x: hidden;
+  }
+  .login{
+    z-index: 3;
+    position: absolute;
+    right: 0;
+  }
+  .about{
+    overflow: hidden;
+    position: relative;
+    padding: 0 !important;
+    width: 100vw;
+    height: calc(100vh - 44px);
+    display: flex;
+  }
+  .main-text{
+    margin: auto;
+    height: 20vh;
+    min-height: 150px;
+    width: 100%;
+    background-color: #343a40;
+  }
+  .video_background{
+    height: 100%;
+    min-width: 100%;
+    min-height: 56.25vw; /* 100 * 9 / 16 */
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+</style>

@@ -1,7 +1,7 @@
 from django.db import models
 
 class News(models.Model):
-    id = models.AutoField(primary_key=True)
+    id_new = models.AutoField(primary_key=True)
     title = models.CharField('Название', max_length=50)
     text = models.TextField('Текст')
     def __str__(self):
@@ -12,7 +12,7 @@ class News(models.Model):
 
 
 class Jobs(models.Model):
-    id = models.AutoField(primary_key=True)
+    id_job = models.AutoField(primary_key=True)
     title = models.CharField('Название вакансии', max_length=50)
     text = models.TextField('Описание')
     salary = models.IntegerField('Заработная плата')
@@ -25,7 +25,7 @@ class Jobs(models.Model):
 
 
 class Documents(models.Model):
-    id = models.AutoField(primary_key=True)
+    id_document = models.AutoField(primary_key=True)
     title = models.TextField('Название документа')
     url = models.URLField('Ссылка на документ')
     def __str__(self):
@@ -36,8 +36,7 @@ class Documents(models.Model):
 
 
 class Blog(models.Model):
-    id = models.AutoField(primary_key=True)
-    id_user = models.ForeignKey('ad.Users', on_delete=models.CASCADE)
+    id_blog = models.AutoField(primary_key=True)
     title = models.CharField('Название блога', max_length=50)
     def __str__(self):
         return self.title
@@ -47,7 +46,7 @@ class Blog(models.Model):
 
 
 class Articles(models.Model):
-    id = models.AutoField(primary_key=True)
+    id_article = models.AutoField(primary_key=True)
     id_blog = models.ForeignKey('Blog', on_delete=models.CASCADE)
     title = models.CharField('Название статьи', max_length=50)
     text = models.TextField('Текст статьи')
@@ -60,8 +59,7 @@ class Articles(models.Model):
 
 
 class Questions(models.Model):
-    id = models.AutoField(primary_key=True)
-    id_user = models.ForeignKey('ad.Users', on_delete=models.CASCADE)
+    id_question = models.AutoField(primary_key=True)
     text = models.TextField('Текст вопроса')
     def __str__(self):
         return self.text
@@ -71,7 +69,7 @@ class Questions(models.Model):
 
 
 class Answers(models.Model):
-    id = models.AutoField(primary_key=True)
+    id_answer = models.AutoField(primary_key=True)
     id_question = models.ForeignKey('Questions', on_delete=models.CASCADE)
     text = models.TextField('Текст ответа')
     def __str__(self):

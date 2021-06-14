@@ -5,7 +5,7 @@
 {% block name %}Главная страница{% endblock %}
 {% block description %}Объявления недвижимости, новости и другие ресурсы сайта{% endblock %}
 {% block content %}
-<div class="row mb-2" xmlns="http://www.w3.org/1999/html">
+<div class="row row-ads mb-2" xmlns="http://www.w3.org/1999/html">
     {% for ad in ads %}
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -14,7 +14,7 @@
           <h3 class="mb-0">{{ad.title}}</h3>
           <div class="mb-1 text-muted">{{ad.date}}</div>
           <p class="card-text mb-auto">{{ad.description}}</p>
-          <a href="{% url 'ad_detail' ad.id %}" class="stretched-link">Продолжить читать</a>
+          <a href="{% url 'ad_detail' ad.id_ad %}" class="stretched-link">Продолжить читать</a>
         </div>
       </div>
     </div>
@@ -34,7 +34,31 @@
 
 {% endfor %}
     </div><!-- /.blog-main -->
+<style>
+  @media print {
 
+body {
+  margin: 0 !important;
+  color: #000;
+  background-color: #fff;
+}
+video{
+  display: none;
+}
+.about{
+  display: none !important;
+}
+.nav-scroller{
+  display: none;
+}
+.main-text{
+  display: none;
+}
+.row-ads{
+  display: none;
+}
+}
+</style>
 <script>
     let size = 30;
   let ads = document.getElementsByClassName('card-text');
@@ -50,3 +74,4 @@
     }
 </script>
 {% endblock %}
+
