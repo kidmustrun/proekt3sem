@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'main',
     'ad',
     'import_export',
+    'dashboard'
 ]
 
 MIDDLEWARE = [

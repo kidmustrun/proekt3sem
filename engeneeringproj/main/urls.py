@@ -13,5 +13,6 @@ urlpatterns = [
     path('api/documents/<int:pk>', DocumentView.as_view()),
     path('blogs/', views.blogs, name='blogs'),
     path('blogs/<id>', views.articles, name='blog_articles'),
-    path('questions/', views.questions, name='questions')
+    path('questions/', views.questions, name='questions'),
+    path('dashboard/', include('dashboard.urls')),
 ]
