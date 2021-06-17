@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='ads',
-            name='id_user',
+            name='id',
             field=models.IntegerField(verbose_name='ID пользователя'),
         ),
     ]

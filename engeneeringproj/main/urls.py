@@ -6,6 +6,8 @@ from .views import (
 
 urlpatterns = [
     path('', views.index, name='home'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls')),
     path('jobs/', views.jobs_list, name='jobs'),
     path('ads/', include('ad.urls'), name='ads'),
     path('documents/', views.documents, name='documents'),
@@ -13,5 +15,6 @@ urlpatterns = [
     path('api/documents/<int:pk>', DocumentView.as_view()),
     path('blogs/', views.blogs, name='blogs'),
     path('blogs/<id>', views.articles, name='blog_articles'),
-    path('questions/', views.questions, name='questions')
+    path('questions/', views.questions, name='questions'),
+    path('dashboard/', include('dashboard.urls')),
 ]

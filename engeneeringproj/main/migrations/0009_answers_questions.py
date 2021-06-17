@@ -15,9 +15,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Questions',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
+                ('id_question', models.AutoField(primary_key=True, serialize=False)),
                 ('text', models.TextField(verbose_name='Текст вопроса')),
-                ('id_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ad.users')),
+                ('id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ad.users')),
             ],
             options={
                 'verbose_name': 'Вопрос',

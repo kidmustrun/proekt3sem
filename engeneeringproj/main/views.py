@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import News, Jobs, Documents, Blog, Articles, Questions, Answers
-from ad.models import Users, Ads
+from ad.models import Ads
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -57,7 +57,7 @@ def documents(request):
 
 
 def blogs(request):
-    blogs = Blog.objects.select_related('id_user')
+    blogs = Blog.objects.select_related('id')
     return render(request, 'main/blogs.html', {'blogs': blogs})
 
 
@@ -67,6 +67,6 @@ def articles(request, id):
     return render(request, 'main/articles.html', {'articles': articles, 'blog': blog})
 
 def questions(request):
-    questions = Questions.objects.select_related('id_user')
+    questions = Questions.objects.select_related('id')
     answers = Answers.objects.select_related('id_question')
     return render(request, 'main/questions.html', {'questions': questions, 'answers': answers})

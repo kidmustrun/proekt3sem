@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Users',
             fields=[
-                ('id_user', models.AutoField(primary_key=True, serialize=False)),
+                ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=50, verbose_name='Имя')),
                 ('surname', models.CharField(max_length=50, verbose_name='Фамилия')),
                 ('password', models.CharField(max_length=50, verbose_name='Пароль')),
@@ -59,7 +59,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='ads',
-            name='id_user',
+            name='id',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ad.users'),
         ),
     ]

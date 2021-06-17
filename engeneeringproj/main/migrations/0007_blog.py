@@ -15,9 +15,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Blog',
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
+                ('id_blog', models.AutoField(primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=50, verbose_name='Название блога')),
-                ('id_user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ad.users')),
+                ('id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ad.users')),
             ],
             options={
                 'verbose_name': 'Блог',

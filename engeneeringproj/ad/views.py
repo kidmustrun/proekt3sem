@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Ads, Credit, Users
+from .models import Ads, Credit
 
 
 def index(request):
@@ -10,6 +10,4 @@ def index(request):
 def detail(request, id):
     ad = Ads.objects.get(id=id)
     credit = Credit.objects.get(id_credit=ad.id_credit)
-    id_user = ad.id_user
-    user = Users.objects.get(id_user=id_user)
     return render(request, 'ad/detail.html', {'ad': ad, 'credit': credit, 'user': user })
