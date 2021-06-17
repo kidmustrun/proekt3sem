@@ -1,8 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Ads(models.Model):
-    id_ad = models.AutoField(primary_key=True)
+class Ad(models.Model):
+    id_ad = models.AutoField(primary_key=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.CharField('Название объявления', max_length=50)
     description = models.TextField('Описание объявления')
     price = models.IntegerField('Цена')
@@ -17,7 +18,7 @@ class Ads(models.Model):
         verbose_name_plural = "Объявления"
 
 class Credit(models.Model):
-    id_credit = models.ForeignKey('Ads', on_delete=models.CASCADE)
+    id_credit = models.ForeignKey('Ad', on_delete=models.CASCADE)
     percent = models.DecimalField('Процент под ипотеку', max_digits=5, decimal_places=3)
 
     class Meta:

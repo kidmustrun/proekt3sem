@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import News, Jobs, Documents, Blog, Articles, Questions, Answers
-from ad.models import Ads
+from ad.models import Ad
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 
 
 def index(request):
-    ads = Ads.objects.all()[:2]
+    ads = Ad.objects.all()[:2]
     news = News.objects.all()
     return render(request, 'main/index.html', {'news': news, 'ads': ads})
 
