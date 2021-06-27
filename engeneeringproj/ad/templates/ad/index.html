@@ -6,24 +6,50 @@
 {% block description %}Объявления недвижимости{% endblock %}
 {% block content %}
 
-
+<div class="input-group d-flex justify-content-between">
+  <div>
+    <form action="{% url 'search_results' %}" method="get" class="form-inline mx-sm-3 mb-2">
+    <input name="q" type="search" id="form1" class="form-control" placeholder="Поиск">
+    <button type="submit" class="btn btn-success">
+      <i>Поиск</i>
+    </button>
+  </form>
+  </div>
+  {% if user.is_authenticated %}
+  <button class="btn btn-outline-primary font-italic" onclick="toggleStyles()">Создать объявление</button>
+  {% endif %}
+</div>
     <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
        Объявления
       </h3>
-      <div class="input-group">
-        <div class="form-outline">
-          <form action="{% url 'search_results' %}" method="get">
-          <input name="q" type="search" id="form1" class="form-control" placeholder="Поиск">
-        </div>
-        <button type="submit" class="btn btn-success">
-          <i>Поиск</i>
-        </button>
-      </form>
-      </div>
+      
       
         
-      </form>
+      {% if user.is_authenticated %}
+      <div class="col-md-8 blog-main">
+            <form class="d-none" id="create_ad" method="POST" novalidate>
+              {% csrf_token %}
+              <div>
+              {% for field in form %}
+              <div class="form-group">
+                  {{field.label_tag}}
+                  <div>{{field}}</div>
+                  {% if field.errors%}
+                  {% for error in field.errors %}
+                  <div class="alert alert-danger">
+                      {{error}}
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+              </div>
+              {% endfor %}
+              </div>
+              <input type="submit" value="Отправить" class="btn btn-primary">
+          </form>
+      
+          </div>
+          {% endif %}
       <h4>Всего объявлений: {{ count }}</h4>
 {% for ad in ads %}
       <div class="card">
@@ -38,5 +64,10 @@
 </div>
 {% endfor %}
     </div><!-- /.blog-main -->
-
+<script>
+  function toggleStyles() {
+    var element = document.getElementById("create_ad");
+    element.classList.toggle("d-none");
+}
+</script>
 {% endblock %}

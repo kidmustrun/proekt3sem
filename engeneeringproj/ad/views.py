@@ -1,11 +1,27 @@
 from django.shortcuts import render
-from .models import Ad, Credit
+from .models import Ad
 from django.db.models import Q
+from .forms import AdForm
 
 def index(request):
     ads = Ad.objects.all()
     count = Ad.objects.count()
-    return render(request, 'ad/index.html', {'ads': ads, 'count': count})
+    context ={}
+  
+    form = AdForm(request.POST or None)
+    if form.is_valid():
+        ad = form.save(commit=False)
+        ad.author = request.user
+        ad.save()
+
+          
+    context['form']= form
+    context['ads']= ads
+    context['count']= count
+    return render(request,
+        'ad/index.html',
+         context
+       )
 
 def search(request):
     query = request.GET.get('q')
@@ -17,9 +33,4 @@ def search(request):
 
 def detail(request, id_ad):
     ad = Ad.objects.get(id_ad=id_ad)
-    credit = Credit.objects.get(id_credit=ad.id_credit)
-<<<<<<< HEAD
-    return render(request, 'ad/detail.html', {'ad': ad, 'credit': credit, 'user': user })
-=======
-    return render(request, 'ad/detail.html', {'ad': ad, 'credit': credit })
->>>>>>> 70ea69988d621a420545d593324f0e77d8b98749
+    return render(request, 'ad/detail.html', {'ad': ad })

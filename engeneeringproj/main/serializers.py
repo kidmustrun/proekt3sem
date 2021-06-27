@@ -1,11 +1,10 @@
 from rest_framework import serializers
-from .models import Documents
+from ad.models import Ad
 
-
-class DocumentSerializer(serializers.Serializer):
-    title = serializers.CharField()
-    url = serializers.CharField()
-    id = serializers.IntegerField()
+class AdSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ad
+        fields = '__all__'
 
     def create(self, validated_data):
         return Documents.objects.create(**validated_data)

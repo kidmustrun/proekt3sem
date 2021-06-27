@@ -6,7 +6,7 @@ from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import DocumentSerializer
+from .serializers import AdSerializer
 from django.shortcuts import get_object_or_404
 
 
@@ -15,34 +15,34 @@ def index(request):
     news = News.objects.all()
     return render(request, 'main/index.html', {'news': news, 'ads': ads})
 
-class DocumentView(APIView):
+class AdView(APIView):
     def get(self, request):
-        documents = Documents.objects.all()
-        serializer = DocumentSerializer(documents, many=True)
-        return Response({"documents": serializer.data})
+        ads = Ad.objects.all()
+        serializer = AdSerializer(ads, many=True)
+        return Response({"ads": serializer.data})
 
     def post(self, request):
-        document = request.data.get('document')
-        serializer = DocumentSerializer(data=document)
+        ad = request.data.get('ad')
+        serializer = AdSerializer(data=ad)
         if serializer.is_valid(raise_exception=True):
-            document_saved = serializer.save()
-        return Response({"success": "Document '{}' created successfully".format(document_saved.title)})
+            ad_saved = serializer.save()
+        return Response({"success": "Ad '{}' created successfully".format(document_saved.title)})
 
     def put(self, request, pk):
-        saved_document = get_object_or_404(Documents.objects.all(), pk=pk)
-        data = request.data.get('document')
-        serializer = DocumentSerializer(instance=saved_document, data=data, partial=True)
+        saved_document = get_object_or_404(Ad.objects.all(), pk=pk)
+        data = request.data.get('ad')
+        serializer = AdSerializer(instance=saved_ad, data=data, partial=True)
         if serializer.is_valid(raise_exception=True):
-            document_saved = serializer.save()
+            ad_saved = serializer.save()
         return Response({
-            "success": "Document '{}' updated successfully".format(document_saved.title)
+            "success": "Ad '{}' updated successfully".format(document_saved.title)
         })
 
     def delete(self, request, pk):
-        document = get_object_or_404(Documents.objects.all(), pk=pk)
-        document.delete()
+        ad = get_object_or_404(Ad.objects.all(), pk=pk)
+        ad.delete()
         return Response({
-            "message": "Document with id `{}` has been deleted.".format(pk)
+            "message": "Ad with id `{}` has been deleted.".format(pk)
         }, status=204)
 
 
