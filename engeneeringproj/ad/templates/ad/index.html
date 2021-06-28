@@ -16,19 +16,12 @@
   </form>
   </div>
   {% if user.is_authenticated %}
-  <button class="btn btn-outline-primary font-italic" onclick="toggleStyles()">Создать объявление</button>
+  <button class="btn btn-outline-primary font-italic" id="button_create" onclick="toggleStyles()">Создать объявление</button>
   {% endif %}
 </div>
-    <div class="col-md-8 blog-main">
-      <h3 class="pb-4 mb-4 font-italic border-bottom">
-       Объявления
-      </h3>
-      
-      
-        
       {% if user.is_authenticated %}
      
-      <div class="d-none" id="create_ad" class="col-md-8 blog-main">
+      <div class="d-none blog-main w-100" id="create_ad">
          <div class="alert alert-secondary">
             <form method="POST" novalidate>
               {% csrf_token %}
@@ -53,11 +46,16 @@
           </div>
         </div>
           {% endif %}
-      <h4>Всего объявлений: {{ count }}</h4>
+     <h3>Всего объявлений: {{ count }}</h3>
+          <div class="blog-main w-100 row justify-content-center">
+            
 {% for ad in ads %}
-      <div class="card">
-  <div class="card-header">
-      {{ad.title}}<span class="badge badge-secondary">{{ad.date}}</span>
+      <div class="card col-md-5 m-3 p-0">
+  <div class="card-header w-100 d-flex justify-content-between">
+    <span>
+      {{ad.title}}
+    </span>
+    <span class="badge badge-secondary">{{ad.date}}</span>
   </div>
   <div class="card-body">
     <h5 class="card-title">{{ad.price}} рублей</h5>
@@ -70,7 +68,12 @@
 <script>
   function toggleStyles() {
     var element = document.getElementById("create_ad");
+    var button = document.getElementById("button_create");
     element.classList.toggle("d-none");
+    if(!element.classList.contains("d-none"))
+    button.innerHTML = 'Закрыть'
+    else 
+    button.innerHTML = 'Создать объявление'
 }
 </script>
 {% endblock %}

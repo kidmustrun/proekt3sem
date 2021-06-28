@@ -22,7 +22,6 @@
         <p>{{ad.description}}</p>
           <p>Расположение: {{ad.geo}}</p>
           <p>Добавлено пользователем: {{ad.author.username}}</p>
-          <p>E-mail: {{ad.author.email}}</p>
       </div>
       {% if user.username == ad.author.username or user.is_staff  %} 
         <button class="btn btn-outline-primary font-italic" onclick="toggleStyles()">Редактировать</button>

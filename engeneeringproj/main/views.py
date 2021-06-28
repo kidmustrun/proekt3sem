@@ -57,13 +57,13 @@ def documents(request):
 
 
 def blogs(request):
-    blogs = Blog.objects.select_related('id')
+    blogs = Blog.objects.all()
     return render(request, 'main/blogs.html', {'blogs': blogs})
 
 
-def articles(request, id):
-    articles = Articles.objects.filter(id_blog=id)
-    blog = Blog.objects.get(id=id)
+def articles(request, id_blog):
+    articles = Articles.objects.filter(id_blog=id_blog)
+    blog = Blog.objects.get(id_blog=id_blog)
     return render(request, 'main/articles.html', {'articles': articles, 'blog': blog})
 
 def questions(request):
