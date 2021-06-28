@@ -27,8 +27,10 @@
       
         
       {% if user.is_authenticated %}
-      <div class="col-md-8 blog-main">
-            <form class="d-none" id="create_ad" method="POST" novalidate>
+     
+      <div class="d-none" id="create_ad" class="col-md-8 blog-main">
+         <div class="alert alert-secondary">
+            <form method="POST" novalidate>
               {% csrf_token %}
               <div>
               {% for field in form %}
@@ -49,6 +51,7 @@
           </form>
       
           </div>
+        </div>
           {% endif %}
       <h4>Всего объявлений: {{ count }}</h4>
 {% for ad in ads %}
