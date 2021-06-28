@@ -62,14 +62,11 @@ video{
 <script>
     let size = 30;
   let ads = document.getElementsByClassName('card-text');
-  console.log(ads.length)
     for (let i = 0; i < ads.length; i++)
     {
         let adText = ads[i].textContent;
         if (adText.length > size) {
-            console.log(ads[i].value)
             ads[i].innerHTML = adText.slice(0, size) + ' ...';
-            console.log("ok")
         }
     }
 </script>
