@@ -156,6 +156,13 @@
      text-transform: capitalize;
      transition: all 0.5s ease 0s;
     }
+    .alert{
+      margin-bottom: 0 !important;
+    }
+    .errorlist li{
+      list-style: none;
+      text-align: left;
+    }
     @media only screen and (max-width: 479px){
      .form-horizontal .form-group{
      padding: 0 25px;
@@ -170,14 +177,15 @@
     </style>
     
     <div class="container">
+    <a href="{% url 'home' %}" class="p-2 text-light">На главную</a>
      <div class="row">
-    
      <div class="col-md-offset-3 col-md-6">
-      <a href="{% url 'home' %}" class="p-2 text-light">На главную</a>
      <form method="POST" class="form-horizontal">
       {% csrf_token %}
+      {{ form.non_field_errors }}
      <span class="heading">РЕГИСТРАЦИЯ</span>
      <div class="form-group">
+      
      <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus required id="id_username" class="form-control" placeholder="Имя пользователя">
      <i class="fa fa-user"></i>
      <div class="fa fa-question-circle">
@@ -187,6 +195,13 @@
       </div>
      </div>
      </div>
+     {% if form.username.errors %}
+     <div class="form-group">
+     <div class="alert alert-danger">
+     {{ form.username.errors }}
+    </div>
+  </div>
+    {% endif %}
      <div class="form-group help">
      <input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="form-control" placeholder="Пароль">
      <i class="fa fa-lock"></i>
@@ -194,15 +209,30 @@
       <div class="alert alert-info custom-alert" role="alert">
         <p>Пароль не должен быть слишком похож на другую вашу личную информацию.</p>
         <p>Ваш пароль должен содержать как минимум 8 символов.</p>
+        <p>Ваш пароль не должен быть часто используемым.</p>
         <p>Пароль не может состоять только из цифр.</p>
       </div>
      </div>
 
      </div>
+     {% if form.password1.errors %}
+     <div class="form-group">
+     <div class="alert alert-danger">
+     {{ form.password1.errors }}
+    </div>
+  </div>
+    {% endif %}
      <div class="form-group help">
       <input type="password" name="password2" autocomplete="new-password" required class="form-control" id="id_password2" placeholder="Пароль еще раз">
       <i class="fa fa-lock"></i>
       </div>
+      {% if form.password2.errors %}
+     <div class="form-group">
+     <div class="alert alert-danger">
+     {{ form.password2.errors }}
+    </div>
+  </div>
+    {% endif %}
      <div class="form-group">
     <a href="{% url 'login' %}" class="p-2 text-light">ВОЙТИ</a>
      <button type="submit" class="btn btn-default">ЗАРЕГИСТРИРОВАТЬСЯ</button>

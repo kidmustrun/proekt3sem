@@ -23,7 +23,7 @@
      
       <div class="d-none blog-main w-100" id="create_ad">
          <div class="alert alert-secondary">
-            <form method="POST" novalidate>
+            <form method="POST">
               {% csrf_token %}
               <div>
               {% for field in form %}
