@@ -14,6 +14,7 @@ def index(request):
         ad = form.save(commit=False)
         ad.author = request.user
         ad.save()
+        return HttpResponseRedirect("/ads")
 
           
     context['form']= form
@@ -27,7 +28,7 @@ def index(request):
 def search(request):
     query = request.GET.get('q')
     object_list = Ad.objects.filter(
-        Q(title__icontains=query) | Q(geo__icontains=query)
+        Q(title__icontains=query) | Q(geo__icontains=query) | Q(description__icontains=query)
     )
     count =  object_list.count()
     return render(request, 'ad/search_results.html', {'object_list': object_list, 'query': query, 'count': count })

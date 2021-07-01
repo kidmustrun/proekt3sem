@@ -7,10 +7,9 @@ class AdSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def create(self, validated_data):
-        return Documents.objects.create(**validated_data)
+        return Ad.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
         instance.title = validated_data.get('title', instance.title)
-        instance.url = validated_data.get('url', instance.url)
         instance.save()
         return instance

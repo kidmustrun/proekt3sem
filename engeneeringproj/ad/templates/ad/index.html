@@ -60,7 +60,8 @@
   <div class="card-body">
     <h5 class="card-title">{{ad.price}} рублей</h5>
     <p class="card-text">{{ad.description}}</p>
-      <a href="{% url 'ad_detail' ad.id_ad %}" class="btn btn-primary">Смотреть подробнее</a>
+    <p class="text-success">{{ad.geo}}</p>
+    <a href="{% url 'ad_detail' ad.id_ad %}" class="text-info">Смотреть подробнее</a>
   </div>
 </div>
 {% endfor %}
@@ -75,5 +76,15 @@
     else 
     button.innerHTML = 'Создать объявление'
 }
+
+let size = 100;
+let ads = document.getElementsByClassName('card-text');
+  for (let i = 0; i < ads.length; i++)
+  {
+      let adText = ads[i].textContent;
+      if (adText.length > size) {
+          ads[i].innerHTML = adText.slice(0, size) + ' ...';
+      }
+  }
 </script>
 {% endblock %}
