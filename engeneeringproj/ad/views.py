@@ -5,7 +5,7 @@ from .forms import AdForm
 from django.http import HttpResponseRedirect
 
 def index(request):
-    ads = Ad.objects.all()
+    ads = Ad.objects.order_by("-date")
     count = Ad.objects.count()
     context ={}
   
