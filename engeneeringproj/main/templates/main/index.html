@@ -5,7 +5,7 @@
 {% block name %}Главная страница{% endblock %}
 {% block description %}Объявления недвижимости, новости и другие ресурсы сайта{% endblock %}
 {% block content %}
-<div class="row row-ads mb-2 w-100 container" xmlns="http://www.w3.org/1999/html">
+<div class="row row-ads mb-2 w-100 container" xmlns="http://www.w3.org/1999/xhtml">
     {% for ad in ads %}
     <div class="col-md-6">
       <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -13,14 +13,13 @@
           <strong class="d-inline-block mb-2 text-primary">{{ad.price}} рублей</strong>
           <h3 class="mb-0">{{ad.title}}</h3>
           <div class="mb-1 text-muted">{{ad.date}}</div>
-          <p class="card-text mb-auto">{{ad.description}}</p>
+          <p class="card-text ads-desc mb-auto">{{ad.description}}</p>
           <a href="{% url 'ad_detail' ad.id_ad %}" class="stretched-link">Продолжить читать</a>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
-</div>
 
     <div class="col-md-8 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">
@@ -34,41 +33,5 @@
 
 {% endfor %}
     </div><!-- /.blog-main -->
-<style>
-  @media print {
-
-body {
-  margin: 0 !important;
-  color: #000;
-  background-color: #fff;
-}
-video{
-  display: none;
-}
-.about{
-  display: none !important;
-}
-.nav-scroller{
-  display: none;
-}
-.main-text{
-  display: none;
-}
-.row-ads{
-  display: none;
-}
-}
-</style>
-<script>
-    let size = 30;
-  let ads = document.getElementsByClassName('card-text');
-    for (let i = 0; i < ads.length; i++)
-    {
-        let adText = ads[i].textContent;
-        if (adText.length > size) {
-            ads[i].innerHTML = adText.slice(0, size) + ' ...';
-        }
-    }
-</script>
 {% endblock %}
 

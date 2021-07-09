@@ -7,29 +7,67 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>{% block title %}{% endblock %}</title>
+    <style>
+      html{
+        overflow-x: hidden;
+      }
+      .login{
+        z-index: 3;
+        position: absolute;
+        right: 0;
+      }
+      .about{
+        overflow: hidden;
+        position: relative;
+        padding: 0 !important;
+        width: 100vw;
+        height: calc(100vh - 44px);
+        display: flex;
+      }
+      .main-text{
+        margin: auto;
+        height: 20vh;
+        min-height: 150px;
+        width: 100%;
+        background-color: #343a40;
+      }
+      .video_background{
+        height: 100%;
+        min-width: 100%;
+        min-height: 56.25vw; /* 100 * 9 / 16 */
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+      @media print {
+    
+    body {
+      margin: 0 !important;
+      color: #000;
+      background-color: #fff;
+    }
+    video{
+      display: none;
+    }
+    .about{
+      display: none !important;
+    }
+    .nav-scroller{
+      display: none;
+    }
+    .main-text{
+      display: none;
+    }
+    .row-ads{
+      display: none;
+    }
+    }
+    </style>
 </head>
 <body>
-
-<script defer>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-4481610-59', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(39705265, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/39705265" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-8588635311388465",
-    enable_page_level_ads: true
-  });
-</script>
     <div class="main-container">
       <div class="login">
       {% if user.is_authenticated %}
@@ -42,11 +80,10 @@
     {% endif %}
   </div>
   <div class="text-white rounded about">
-    <video class="video_background"  preload="auto" autoplay="true" loop="true" muted="muted">
+    <video class="video_background"  preload="auto" autoplay loop muted="muted">
 
       <source src="../../media/main.mp4" type="video/mp4"><!-- MP4 для Safari, IE9, iPhone, iPad, Android, и Windows Phone 7 -->
     
-      </object>
     
     </video>
     <div class="main-text text-center">
@@ -65,46 +102,21 @@
       <a class="p-2 text-light" href="{% url 'questions' %}">Вопросы</a>
     </nav>
   </div>
-        <main role="main" class="container">
-  <div>
+        <main class="container">
 {% block content %}{% endblock %}
-</div>
 </main><!-- /.container -->
+</div>
+
+<script>
+    let size = 30;
+  let ads = document.getElementsByClassName('ads-desc');
+    for (let i = 0; i < ads.length; i++)
+    {
+        let adText = ads[i].textContent;
+        if (adText.length > size) {
+            ads[i].innerHTML = adText.slice(0, size) + ' ...';
+        }
+    }
+</script>
 </body>
 </html>
-<style>
-  html{
-    overflow-x: hidden;
-  }
-  .login{
-    z-index: 3;
-    position: absolute;
-    right: 0;
-  }
-  .about{
-    overflow: hidden;
-    position: relative;
-    padding: 0 !important;
-    width: 100vw;
-    height: calc(100vh - 44px);
-    display: flex;
-  }
-  .main-text{
-    margin: auto;
-    height: 20vh;
-    min-height: 150px;
-    width: 100%;
-    background-color: #343a40;
-  }
-  .video_background{
-    height: 100%;
-    min-width: 100%;
-    min-height: 56.25vw; /* 100 * 9 / 16 */
-    z-index: -1;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-  }
-</style>
